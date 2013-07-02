@@ -14,8 +14,8 @@
   <b>Logout:</b>
   <%= @attendance.logout %>
 </p>
-<%= calendar @show_attendance, :start_day => :monday do |event| %>
-        <div><%= link_to event.title, event %></div>
+<%= calendar @events do |event| %>
+  <div><%= link_to event.title, event %></div>
 <% end %>
 <br/>
 <br/>

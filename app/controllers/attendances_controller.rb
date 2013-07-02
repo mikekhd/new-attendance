@@ -14,10 +14,10 @@ class AttendancesController < ApplicationController
   # GET /attendances/1.json
   def show
       if current_user and admin?
-      @show_attendances = Attendance.all
+      @events = Attendance.all
       
     else 
-       @show_attendances = current_user.attendences.all
+       @events = current_user.attendences.all
     end 
     @attendance = Attendance.find(params[:id])
   end
