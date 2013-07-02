@@ -3,7 +3,6 @@ class AttendancesController < ApplicationController
   # GET /attendances
   # GET /attendances.json
   def index
-    @attendances = Attendance.all
 
     respond_to do |format|
       format.html # index.html.erb
@@ -14,12 +13,13 @@ class AttendancesController < ApplicationController
   # GET /attendances/1
   # GET /attendances/1.json
   def show
+      if current_user and admin?
+      @show_attendances = Attendance.all
+      
+    else 
+       @show_attendances = current_user.attendences.all
+    end 
     @attendance = Attendance.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @attendance }
-    end
   end
 
   # GET /attendances/new
