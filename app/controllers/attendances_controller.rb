@@ -1,7 +1,5 @@
 class AttendancesController < ApplicationController
   load_and_authorize_resource
-  # GET /attendances
-  # GET /attendances.json
   def index
 
     respond_to do |format|
@@ -21,9 +19,6 @@ class AttendancesController < ApplicationController
     end 
     @attendance = Attendance.find(params[:id])
   end
-
-  # GET /attendances/new
-  # GET /attendances/new.json
   def new
     @attendance = Attendance.new
 

@@ -7,6 +7,7 @@ Calendar::Application.routes.draw do
   root :to => 'home#pages'
   resources :users
   resources :attendances
+  resources :categories
   controller :sessions do
     get 'login' => :new
     post 'login' => :create

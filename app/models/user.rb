@@ -3,14 +3,14 @@ class User < ActiveRecord::Base
   has_secure_password
   has_many  :attendances
   has_many  :recesses
-  
+  has_many  :categories
   def login
     now = DateTime.now
     prev_day = now.prev_day.end_of_day
     next_day = now.next_day.beginning_of_day
     if attendances.where(login: (prev_day..next_day)).count.zero?
       attendances.create(login: DateTime.now)
-      userbreak = userbreaks.last
+      recess = recesses.last
       if recess.present?
          recess.r_stop= DateTime.now
          recess.save
@@ -27,4 +27,5 @@ class User < ActiveRecord::Base
       recesses.create(start_break:DateTime.now)
     end
   end
+ 
 end 
